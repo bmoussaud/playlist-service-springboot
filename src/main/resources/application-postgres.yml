@@ -1,0 +1,13 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/musicstore
+    username: ${PGSQL_USER:petclinic}
+    password: ${PGSQL_PASSWORD:petclinic}
+    driverClassName: org.postgresql.Driver    
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+  sql:
+    init:
+      platform: postgres
+      mode: always     
+      continue-on-error: true 

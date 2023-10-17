@@ -10,10 +10,10 @@
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>org.moussaud.app.musicstore</groupId>
-	<artifactId>playlist-springboot-service</artifactId>
+	<artifactId>playlist-service-springboot</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>playlist-springboot-service</name>
-	<description>playlist-springboot-service project for Spring Boot</description>
+	<name>playlist-service-springboot</name>
+	<description>playlist-service-springboot project for Spring Boot</description>
 
 	<properties>
 		<java.version>17</java.version>
@@ -39,8 +39,8 @@
 			<groupId>se.michaelthelin.spotify</groupId>
 			<artifactId>spotify-web-api-java</artifactId>
 			<version>8.3.0</version>
-		  </dependency>
-		  
+		</dependency>
+
 		<dependency>
 			<groupId>org.postgresql</groupId>
 			<artifactId>postgresql</artifactId>

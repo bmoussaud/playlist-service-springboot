@@ -1,13 +1,13 @@
 apiVersion: carto.run/v1alpha1
 kind: Workload
 metadata:
-  name: playlist-springboot-service
+  name: playlist-service-springboot
   labels:
     apps.tanzu.vmware.com/workload-type: web
     apps.tanzu.vmware.com/has-tests: "true"
     apps.tanzu.vmware.com/auto-configure-actuators: "true"
     app.kubernetes.io/part-of: musicstore
-    app.kubernetes.io/name: playlist-springboot-service
+    app.kubernetes.io/name: playlist-service-springboot
   annotations:
     autoscaling.knative.dev/minScale: "1"
 spec:
@@ -20,6 +20,15 @@ spec:
       url: <https URL for your generated project's Git repository>
       ref:
         branch: main
+  env:
+    - name: SPRING_PROFILES_ACTIVE
+      value: postgres
+  serviceClaims:
+    - name: database
+      ref:
+        apiVersion: services.apps.tanzu.vmware.com/v1alpha1    
+        kind: ClassClaim
+        name: musicstore-classclaim-pgsql
   params:
     - name: testing_pipeline_matching_labels
       value:
@@ -29,4 +38,4 @@ spec:
     - name: scanning_image_policy
       value: scan-policy-java
     - name: gitops_commit_message
-      value: playlist-springboot-service dev supplychain@cluster.local
+      value: playlist-service-springboot dev supplychain@cluster.local

@@ -6,9 +6,11 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
+@RequestMapping("/api")
 public class PlaylistController {
 
     @Autowired
@@ -31,11 +33,16 @@ public class PlaylistController {
 
     @GetMapping("/playlist/load")
     public Integer load() {
-        List<MusicStorePlaylist> searchPlaylist = loader.searchPlaylist("rock", 4, 10);
+        List<MusicStorePlaylist> searchPlaylist = loader.searchPlaylist("crossplane", 10, 10);
         Iterable<MusicStorePlaylist> saveAll = this.repository.saveAll(searchPlaylist);
         for (MusicStorePlaylist musicStorePlaylist : saveAll) {
             System.out.println(musicStorePlaylist.index);
         }
         return searchPlaylist.size();
+    }
+
+    @GetMapping("/playlist/clear")
+    public void clear() {
+        repository.deleteAll();
     }
 }

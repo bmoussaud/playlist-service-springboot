@@ -5,6 +5,7 @@ import java.net.UnknownHostException;
 
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.zaxxer.hikari.HikariDataSource;
@@ -13,6 +14,7 @@ import java.net.UnknownHostException;
 import java.util.Map;
 
 @RestController
+@RequestMapping("/api")
 public class ConfigurationController {
 
     private final HikariDataSource dataSource;
@@ -29,7 +31,8 @@ public class ConfigurationController {
                 "driver", dataSource.getDriverClassName(),
                 "username", dataSource.getUsername(),
                 "password", dataSource.getPassword(),
-                "hostname", getHostname());
+                "hostname", getHostname()
+               );
 
     }
 
