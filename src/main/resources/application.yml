@@ -1,0 +1,52 @@
+
+spotify:
+  clientId: be403766f58a4a77a2425138d1a7821a
+  clientSecret: 9ba842b14fb043f4b47cba13d27cdd51
+
+spring:
+  application:
+    name: playlist-springboot-service
+  jpa:
+    generate-ddl: true
+  sql:
+    init:
+      mode: always
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: always
+  metrics:
+    distribution:
+      percentiles-histogram:
+        http.server.requests: true
+    tags:
+      application: ${spring.application.name}
+      service: ${spring.application.name}
+      source: ${spring.application.name}-${random.uuid}
+  tracing:
+    # Set to true to forward tracing spans to a local Zipkin instance.
+    enabled: false
+    sampling:
+      probability: 0.1
+  otlp:
+    metrics:
+      export:
+        # Set to true to forward metrics to a local OpenTelemetry collector.
+        enabled: false
+        step: 30s
+logging:
+  pattern:
+    # Include tracing ids in log entries.
+    level: "%5p [${spring.application.name:},%X{traceId:-},%X{spanId:-}]"
+  level:    
+    org.moussaud: DEBUG    
+    org.springframework.web: ERROR
+    org.hibernate: ERROR
+    org.springframework.cloud.bindings: debug
+    org.springframework.jdbc.core.JdbcTemplate: debug
+    org.springframework.jdbc.datasource.init.ScriptUtils: debug    
