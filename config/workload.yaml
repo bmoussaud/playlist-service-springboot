@@ -17,7 +17,7 @@ spec:
         value: "17"
   source:
     git:
-      url: <https URL for your generated project's Git repository>
+      url: https://github.com/bmoussaud/playlist-service-springboot.git
       ref:
         branch: main
   env:
