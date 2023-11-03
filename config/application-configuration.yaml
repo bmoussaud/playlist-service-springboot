@@ -6,10 +6,10 @@ metadata:
 spec:
   backends:
     - type: git
-      uri: https://github.com/bmoussaud/micropets-app-config-gitops
+      uri: https://github.com/bmoussaud/micropets-app-config-gitops.git
       defaultLabel: main
       searchPaths:
-        - config/musicstore-dev/playlist-springboot-service
+        - config/musicstore-dev/playlist-service-springboot
 ---
 apiVersion: config.apps.tanzu.vmware.com/v1alpha4
 kind: ConfigurationSlice

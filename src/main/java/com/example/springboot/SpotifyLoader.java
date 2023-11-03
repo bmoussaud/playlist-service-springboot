@@ -44,7 +44,7 @@ public class SpotifyLoader {
         try {
             clientCredentials = clientCredentialsRequest.execute();
         } catch (Exception e) {
-            throw new MusicStoreException("Spotify Credential Request failed", e);
+            throw new MusicStoreException("Spotify Credential Request failed.", e);
         }
 
         spotifyApi.setAccessToken(clientCredentials.getAccessToken());

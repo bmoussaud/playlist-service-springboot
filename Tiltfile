@@ -2,7 +2,7 @@ LOCAL_PATH = os.getenv("LOCAL_PATH", default='.')
 NAMESPACE = "musicstore-dev"
 
 allow_k8s_contexts('aks-eu-tap-6')
-k8s_yaml(["config/class-claim-pgsql.yaml"])
+#k8s_yaml(["config/class-claim-pgsql.yaml"])
 
 k8s_custom_deploy(
     'playlist-springboot-service',

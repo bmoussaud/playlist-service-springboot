@@ -3,6 +3,7 @@ package com.example.springboot;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,6 +18,9 @@ import java.util.Map;
 @RequestMapping("/api")
 public class ConfigurationController {
 
+    @Value("${k8s.bindings.configuration.provider:xxxxxxxx}")
+    String provider;
+
     private final HikariDataSource dataSource;
 
     public ConfigurationController(HikariDataSource dataSource) {
@@ -25,15 +29,14 @@ public class ConfigurationController {
 
     @GetMapping(value = "/config", produces = MediaType.APPLICATION_JSON_VALUE)
     public Map<String, ?> config() {
-
         return Map.of(
                 "url", dataSource.getJdbcUrl(),
                 "driver", dataSource.getDriverClassName(),
                 "username", dataSource.getUsername(),
                 "password", dataSource.getPassword(),
-                "hostname", getHostname()
-               );
-
+                "hostname", getHostname(),
+                "color", "green",
+                "provider", provider);
     }
 
     private String getHostname() {
@@ -44,4 +47,9 @@ public class ConfigurationController {
         }
     }
 
+    public String getProvider() {
+        return provider;
+    }
+
+    
 }
