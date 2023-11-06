@@ -28,7 +28,7 @@ spec:
       ref:
         apiVersion: services.apps.tanzu.vmware.com/v1alpha1    
         kind: ClassClaim
-        name: musicstore-classclaim-pgsql
+        name: musicstore-pgsql-bitnami
   params:
     - name: testing_pipeline_matching_labels
       value:
