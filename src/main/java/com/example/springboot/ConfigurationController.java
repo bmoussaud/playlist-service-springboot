@@ -10,8 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.zaxxer.hikari.HikariDataSource;
-import java.net.InetAddress;
-import java.net.UnknownHostException;
 import java.util.Map;
 
 @RestController
