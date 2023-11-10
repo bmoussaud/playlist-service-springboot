@@ -18,14 +18,14 @@ public class MyConfigurationBindingsPropertiesProcessor implements BindingsPrope
 
     @Override
     public void process(Environment environment, Bindings bindings, Map<String, Object> properties) {
-        logger.error("process " + TYPE + " bindings");
+        logger.info("process " + TYPE + " bindings");
         List<Binding> myBindings = bindings.filterBindings(TYPE);
         if (myBindings.size() == 0) {
             return;
         }
         Binding binding = myBindings.get(0);
         String provider = binding.getProvider();
-        logger.error("provider value is " + provider);
+        logger.info("provider value is " + provider);
         properties.put("k8s.bindings.configuration.provider", provider);
 
     }
